@@ -1,0 +1,26 @@
+[
+  {
+    "word": "kunapa",
+    "translation": "dog",
+    "example": "El perro corre rápido.",
+    "category": "animals",
+    "pronunciation": "change later",
+    "picture": "change later"
+  },
+  {
+    "word": "gato",
+    "translation": "cat",
+    "example": "El gato duerme mucho.",
+    "category": "animals",
+    "pronunciation": "change later",
+    "picture": "change later"
+  },
+  {
+    "word": "rojo",
+    "translation": "red",
+    "example": "El coche es rojo.",
+    "category": "colors",
+    "pronunciation": "change later",
+    "picture": "change later"
+  }
+]
