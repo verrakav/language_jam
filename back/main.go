@@ -31,7 +31,7 @@ func  initDB(){
 
 // fetches the words
 func getWords(c *gin.Context){
-	rows, err := db.Query(context.Background(), "SELECT id, word, translation, example, category, pronunciation, picture FROM words")
+	rows, err := db.Query(context.Background(), "SELECT id, word, translation, example, translationExample, category, pronunciation, picture FROM words")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"error": "Failed to fetch words",
@@ -44,9 +44,9 @@ func getWords(c *gin.Context){
 	var words []map[string]interface{}
 	for rows.Next(){
 		var id int
-		var word, translation, example, category, pronunciation, picture string
+		var word, translation, example, translationExample, category, pronunciation, picture string
 
-		err := rows.Scan(&id, &word, &translation, &example, &category, &pronunciation, &picture)
+		err := rows.Scan(&id, &word, &translation, &example, &translationExample, &category, &pronunciation, &picture)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to scan words"})
 			return
@@ -57,6 +57,7 @@ func getWords(c *gin.Context){
 			"word": word,
 			"translation": translation,
 			"example": example,
+			"translationExample": translationExample,
 			"pronunciation": pronunciation,
 			"picture": picture,
 			"category": category,

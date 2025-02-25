@@ -1,26 +1,119 @@
 [
   {
-    "word": "kunapa",
-    "translation": "dog",
-    "example": "El perro corre rápido.",
-    "category": "animals",
-    "pronunciation": "change later",
-    "picture": "change later"
+    "word": "karriny",
+    "translation": "people",
+    "example": "",
+    "translationExample": "",
+    "category": "karriny",
+    "pronunciation": "karriny",
+    "picture": "karriny"
   },
   {
-    "word": "gato",
-    "translation": "cat",
-    "example": "El gato duerme mucho.",
-    "category": "animals",
-    "pronunciation": "change later",
-    "picture": "change later"
+    "word": "pululu",
+    "translation": "newborn baby",
+    "example": "Pululu ama wakarra purnu-ngku ngunta.",
+    "translationExample": "The newborn baby is lying awake in the coolamon.",
+    "category": "karriny",
+    "pronunciation": "pululu",
+    "picture": "pululu"
   },
   {
-    "word": "rojo",
-    "translation": "red",
-    "example": "El coche es rojo.",
-    "category": "colors",
-    "pronunciation": "change later",
-    "picture": "change later"
+    "word": "pika-pikka",
+    "translation": "children",
+    "example": "Pika-pikka ajjul janta janta.",
+    "translationExample": "The children are standing around.",
+    "category": "karriny",
+    "pronunciation": "pika-pikka",
+    "picture": "pika-pikka"
+  },
+  {
+    "word": "jura",
+    "translation": "girl",
+    "example": "Jura-ngka ama nyayi pangkal nyanjjan.",
+    "translationExample": "The little girl is looking at something.",
+    "category": "karriny",
+    "pronunciation": "jura",
+    "picture": "jura"
+  },
+  {
+    "word": "kaarnu",
+    "translation": "boy",
+    "example": "Kaarnu ama wilyarr janta.",
+    "translationExample": "The boy is smiling.",
+    "category": "karriny",
+    "pronunciation": "kaarnu",
+    "picture": "kaarnu"
+  },
+  {
+    "word": "partarta",
+    "translation": "teenage girl",
+    "example": "Partarta partarta-jja ajjul nyanjjan.",
+    "translationExample": "The teenage girls are watching.",
+    "category": "karriny",
+    "pronunciation": "partarta",
+    "picture": "partarta"
+  },
+  {
+    "word": "marlarra",
+    "translation": "teenage boy",
+    "example": "Marlarra marlarra ajjul janta.",
+    "translationExample": "The teenage boys are standing.",
+    "category": "karriny",
+    "pronunciation": "marlarra",
+    "picture": "marlarra"
+  },
+  {
+    "word": "kirriji",
+    "translation": "woman",
+    "example": "Kirriji ama janta.",
+    "translationExample": "The woman is standing.",
+    "category": "karriny",
+    "pronunciation": "kirriji",
+    "picture": "kirriji"
+  },
+  {
+    "word": "kartti",
+    "translation": "man",
+    "example": "Kartti ama nyinnta mukkarti jangu.",
+    "translationExample": "A man is sitting with a hat on.",
+    "category": "karriny",
+    "pronunciation": "kartti",
+    "picture": "kartti"
+  },
+  {
+    "word": "wulkuman kirriji",
+    "translation": "old woman",
+    "example": "Wulkuman kirriji ama nyinta wilyarr janta.",
+    "translationExample": "The old woman is sitting laughing.",
+    "category": "karriny",
+    "pronunciation": "wulkuman_kirriji",
+    "picture": "wulkuman_kirriji"
+  },
+  {
+    "word": "pulkka",
+    "translation": "old man",
+    "example": "Pulkka ama nyinta.",
+    "translationExample": "The old man is sitting down.",
+    "category": "karriny",
+    "pronunciation": "pulkka",
+    "picture": "pulkka"
+  },
+  {
+    "word": "mijiji",
+    "translation": "white woman",
+    "example": "Mijiji ama nyinta miyilikari jangu kapi mukkarti jangu.",
+    "translationExample": "The white woman is sitting with glasses and a hat on.",
+    "category": "karriny",
+    "pronunciation": "mijiji",
+    "picture": "mijiji"
+  },
+  {
+    "word": "papulanyi",
+    "translation": "white man",
+    "example": "Papulanyi ama wilyarr janta.",
+    "translationExample": "The white man is smiling.",
+    "category": "karriny",
+    "pronunciation": "papulanyi",
+    "picture": "papulanyi"
   }
 ]

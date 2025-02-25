@@ -16,7 +16,7 @@ export default function Dictoinary() {
     fetch("http://localhost:8080/words")
       .then(res => res.json())
       .then(data => {
-        console.log("Fetched data: ", data);
+        // console.log("Fetched data: ", data);
         setWords(data);
         // picks a random word
         setSelectedWord(data[Math.floor(Math.random() * data.length)]);
@@ -25,7 +25,7 @@ export default function Dictoinary() {
         console.error("Failed to fetch at the words at the front: ", err)
       );
   }, []);
-  console.log(words);
+  // console.log(words);
   // searching functionality
   const filteredWords = words.filter(
     word =>
@@ -48,9 +48,9 @@ export default function Dictoinary() {
           {filteredWords.map(word => (
             <p
               key={word.id}
-              className="p-2 cursor-pointer hover:bg-gray-200 rounded"
+              className="p-2 cursor-pointer border-b hover:bg-gray-200 rounded text-lg mb-2"
               onClick={() => setSelectedWord(word)}>
-              {word.word} = {word.translation}
+              {word.word} - {word.translation}
             </p>
           ))}
         </div>

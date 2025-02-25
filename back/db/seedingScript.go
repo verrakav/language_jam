@@ -15,6 +15,7 @@ type Word struct {
 	Word string `json:"word"`;
 	Translation string `json:"translation"`;
 	Example string `json:"example"`;
+	TranslationExample string `json:"translationExample"`;
 	Category string `json"category"`;
 	Pronunciation string `json:"pronunciation"`;
 	Picture string `json"picture"`
@@ -46,7 +47,7 @@ func main(){
 
 	// inserts data into the db
 	for _, word := range words {
-		_, err := db.Exec("INSERT INTO words (word, translation, example, category, pronunciation, picture) Values ($1, $2, $3, $4, $5, $6)", word.Word, word.Translation, word.Example, word.Category, word.Pronunciation, word.Picture)
+		_, err := db.Exec("INSERT INTO words (word, translation, example, translationExample, category, pronunciation, picture) Values ($1, $2, $3, $4, $5, $6, $7)", word.Word, word.Translation, word.Example, word.TranslationExample, word.Category, word.Pronunciation, word.Picture)
 		if err != nil {
 			log.Fatal(err)
 		}
