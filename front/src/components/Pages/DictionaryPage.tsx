@@ -5,7 +5,7 @@ import {TypeWord} from "../../Types";
 import WordCard from "../WordCard";
 
 // TODO: type for the WORD
-export default function Dictoinary() {
+export default function DictoinaryPage() {
   // setting state, move somewhere later?
   const [words, setWords] = useState<TypeWord[]>([]);
   const [search, setSearch] = useState("");

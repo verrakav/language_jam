@@ -2,10 +2,10 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 // components
 import Layout from "./components/Layout";
-import Home from "./components/Pages/Home";
-import SignIn from "./components/Pages/SignIn";
-import Dictionary from "./components/Pages/Dictionary";
-import Study from "./components/Pages/Study";
+import HomePage from "./components/Pages/HomePage";
+import SignInPage from "./components/Pages/SignInPage";
+import DictionaryPage from "./components/Pages/DictionaryPage";
+import StudyPage from "./components/Pages/StudyPage";
 
 export default function AppContainer() {
   return (
@@ -14,10 +14,10 @@ export default function AppContainer() {
         <div className="flex flex-grow p-4">
           <Layout>
             <Routes>
-              <Route path="/home" element={<Home />} />
-              <Route path="/signin" element={<SignIn />} />
-              <Route path="/dictionary" element={<Dictionary />} />
-              <Route path="/study" element={<Study />} />
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/signin" element={<SignInPage />} />
+              <Route path="/dictionary" element={<DictionaryPage />} />
+              <Route path="/study" element={<StudyPage />} />
             </Routes>
           </Layout>
         </div>

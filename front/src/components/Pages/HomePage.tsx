@@ -1,6 +1,6 @@
 import CustomShape from "../drafts/CustomShape";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div className="flex">
       HOME
