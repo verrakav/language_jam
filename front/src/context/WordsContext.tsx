@@ -2,10 +2,14 @@ import {createContext, useContext, useState, useEffect, ReactNode} from "react";
 // types
 import {TypeWord} from "../Types";
 
-const WordsContext = createContext<TypeWord[]>([]);
+const WordsContext = createContext<{words: TypeWord[]; categories: string[]}>({
+  words: [],
+  categories: []
+});
 
 export function WordContextProvider({children}: {children: ReactNode}) {
   const [words, setWords] = useState<TypeWord[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
   // effect to fetch ALL WORDS
   useEffect(() => {
     fetch("http://localhost:8080/words")
@@ -19,9 +23,19 @@ export function WordContextProvider({children}: {children: ReactNode}) {
       );
   }, []);
 
-  const categories = new Set(words);
+  //  gets ALL CATEGORIES
+  useEffect(() => {
+    fetch("http://localhost:8080/categories").then(res =>
+      res.json().then(data => setCategories(data))
+    );
+  }, []);
   // console.log(words);
-  return <WordsContext.Provider value={words}>{children}</WordsContext.Provider>;
+  console.log(categories);
+  return (
+    <WordsContext.Provider value={{words, categories}}>
+      {children}
+    </WordsContext.Provider>
+  );
 }
 
 export function useWordsContext() {

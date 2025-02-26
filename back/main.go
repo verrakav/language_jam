@@ -14,7 +14,7 @@ import (
 
 var db *pgxpool.Pool
 
-// gets db access
+//WORKS: gets db access
 func  initDB(){
 	err := godotenv.Load(".env")
 	if err != nil {
@@ -30,7 +30,7 @@ func  initDB(){
 	log.Println("Connected to db")
 }
 
-// fetches the words
+//WORKS: fetches the words
 func getWords(c *gin.Context){
 	rows, err := db.Query(context.Background(), "SELECT id, word, translation, example, translationExample, category, pronunciation, picture FROM words")
 	if err != nil {
@@ -69,7 +69,31 @@ func getWords(c *gin.Context){
 	c.JSON(http.StatusOK, words)
 }
 
-// entry point
+// NEW:
+func getCategories(c *gin.Context){
+	rows, err := db.Query(context.Background(), "SELECT DISTINCT category FROM words")
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Failed to fetch categories",
+			"details": err.Error(),
+		})
+	return
+	}
+	defer rows.Close()
+
+	var categories []string
+	for rows.Next(){
+		var category string
+		if err := rows.Scan(&category); err != nil{
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to scan categories"})
+			return
+		}
+		categories = append(categories, category)
+	}
+	c.JSON(http.StatusOK, categories)
+}
+
+//WORKS: entry point
 func main(){
 	initDB()
 	// closes the connection to avoid exhaustion errors
@@ -87,10 +111,12 @@ func main(){
 	
 	// defines the home route
 	router.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"message": "Welcome to the Warumungu API!"})
+		c.JSON(http.StatusOK, gin.H{"message": "Welcome to the Warumungu Dictionary API"})
 	})
 	// defines the words route
 	router.GET("/words", getWords)
+	// defines the categories route
+	router.GET("/categories", getCategories)
 	// starts the server
 	router.Run(":8080")
 }

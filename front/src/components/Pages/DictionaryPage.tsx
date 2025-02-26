@@ -8,7 +8,7 @@ import {TypeWord} from "../../Types";
 import WordCard from "../WordCard";
 
 export default function DictoinaryPage() {
-  const words = useWordsContext();
+  const {words} = useWordsContext();
 
   const [search, setSearch] = useState("");
   const [selectedWord, setSelectedWord] = useState<TypeWord | null>(null);
