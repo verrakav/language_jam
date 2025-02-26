@@ -1,31 +1,25 @@
-import {useState, useEffect} from "react";
+// hooks
+import {useEffect, useState} from "react";
+// context
+import {useWordsContext} from "../../context/WordsContext";
 // types
 import {TypeWord} from "../../Types";
 //components
 import WordCard from "../WordCard";
 
-// TODO: type for the WORD
 export default function DictoinaryPage() {
-  // setting state, move somewhere later?
-  const [words, setWords] = useState<TypeWord[]>([]);
+  const words = useWordsContext();
+
   const [search, setSearch] = useState("");
   const [selectedWord, setSelectedWord] = useState<TypeWord | null>(null);
 
-  // effect to fetch ALL WORDS
   useEffect(() => {
-    fetch("http://localhost:8080/words")
-      .then(res => res.json())
-      .then(data => {
-        // console.log("Fetched data: ", data);
-        setWords(data);
-        // picks a random word
-        setSelectedWord(data[Math.floor(Math.random() * data.length)]);
-      })
-      .catch(err =>
-        console.error("Failed to fetch at the words at the front: ", err)
-      );
-  }, []);
-  // console.log(words);
+    // picks a random word
+    if (words.length > 0) {
+      const randomWord = words[Math.floor(Math.random() * words.length)];
+      setSelectedWord(randomWord);
+    }
+  }, [words]);
   // searching functionality
   const filteredWords = words.filter(
     word =>

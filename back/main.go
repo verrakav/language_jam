@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"database/sql"
 	"log"
 	"net/http"
 	"os"
@@ -44,8 +45,8 @@ func getWords(c *gin.Context){
 	var words []map[string]interface{}
 	for rows.Next(){
 		var id int
-		var word, translation, example, translationExample, category, pronunciation, picture string
-
+		var word, translation, category string
+		var example, translationExample, pronunciation, picture sql.NullString
 		err := rows.Scan(&id, &word, &translation, &example, &translationExample, &category, &pronunciation, &picture)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to scan words"})
@@ -56,11 +57,11 @@ func getWords(c *gin.Context){
 			"id": id,
 			"word": word,
 			"translation": translation,
-			"example": example,
-			"translationExample": translationExample,
-			"pronunciation": pronunciation,
-			"picture": picture,
+			"example": example.String,
+			"translationExample": translationExample.String,
 			"category": category,
+			"pronunciation": pronunciation.String,
+			"picture": picture.String,
 
 		})
 	}
