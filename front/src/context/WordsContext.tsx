@@ -9,10 +9,12 @@ const WordsContext = createContext<{words: TypeWord[]; categories: string[]}>({
 
 export function WordContextProvider({children}: {children: ReactNode}) {
   const [words, setWords] = useState<TypeWord[]>([]);
-  const [categories, setCategories] = useState<string[]>([]);
+  const [categories, setCategories] = useState([]);
   // effect to fetch ALL WORDS
   useEffect(() => {
-    fetch("http://localhost:8080/words")
+    fetch("http://localhost:8080/words", {
+      method: "GET"
+    })
       .then(res => res.json())
       .then(data => {
         // console.log("Fetched data: ", data);
@@ -25,9 +27,9 @@ export function WordContextProvider({children}: {children: ReactNode}) {
 
   //  gets ALL CATEGORIES
   useEffect(() => {
-    fetch("http://localhost:8080/categories").then(res =>
-      res.json().then(data => setCategories(data))
-    );
+    fetch("http://localhost:8080/categories", {
+      method: "GET"
+    }).then(res => res.json().then(data => setCategories(data)));
   }, []);
   // console.log(words);
   console.log(categories);

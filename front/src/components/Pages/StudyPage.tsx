@@ -11,7 +11,7 @@ export default function StudyPage() {
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-4xl">
         {categories.map(category => (
-          <CategoryCard key={category} category={category} />
+          <CategoryCard key={category.name} category={category} />
         ))}
       </div>
     </div>
@@ -21,7 +21,8 @@ export default function StudyPage() {
 function CategoryCard({category}: {category: string}) {
   return (
     <div className="bg-white shadow-lg rounded-lg p-4 text-center cursor-pointer hover:shadow-xl transition">
-      <h2 className="text-xl font-semibold">{category}</h2>
+      <h2 className="text-xl font-semibold">{category.name}</h2>
+      <p>{category.translation}</p>
       <img src={`/pictures/${category}`} />
     </div>
   );

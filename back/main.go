@@ -69,9 +69,9 @@ func getWords(c *gin.Context){
 	c.JSON(http.StatusOK, words)
 }
 
-// NEW:
+//WORKS:
 func getCategories(c *gin.Context){
-	rows, err := db.Query(context.Background(), "SELECT DISTINCT category FROM words")
+	rows, err := db.Query(context.Background(), "SELECT DISTINCT category, translation FROM words WHERE example IS NULL OR example = ''")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"error": "Failed to fetch categories",
@@ -81,14 +81,20 @@ func getCategories(c *gin.Context){
 	}
 	defer rows.Close()
 
-	var categories []string
+	var categories []map[string]interface{}
 	for rows.Next(){
+
 		var category string
-		if err := rows.Scan(&category); err != nil{
+		var translation string
+
+		if err := rows.Scan(&category, &translation); err != nil{
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to scan categories"})
 			return
 		}
-		categories = append(categories, category)
+		categories = append(categories, gin.H{
+			"name": category,
+			"translation": translation,
+		})
 	}
 	c.JSON(http.StatusOK, categories)
 }
@@ -106,8 +112,11 @@ func main(){
 		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
 		c.Writer.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
-		c.Next()
-	})
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(http.StatusNoContent)
+			return
+		}
+		c.Next()	})
 	
 	// defines the home route
 	router.GET("/", func(c *gin.Context) {
